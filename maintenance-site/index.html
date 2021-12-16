@@ -126,6 +126,26 @@
     </svg>
   </div>
   <script>
+    const allowedDomains = [
+      'https://web.testing.passculture.team',
+      'https://app.testing.passculture.team',
+      'https://pro.testing.passculture.team',
+      'https://backend.testing.passculture.team',
+      'https://web.staging.passculture.team ',
+      'https://app.staging.passculture.team',
+      'https://pro.staging.passculture.team',
+      'https://backend.staging.passculture.team',
+      'https://web.integration.passculture.app',
+      'https://integration.passculture.app',
+      'https://backend.integration.passculture.app',
+      'https://integration.passculture.pro',
+      'https://backend.integration.passculture.pro',
+      'https://web.passculture.app',
+      'https://passculture.app',
+      'https://backend.passculture.app',
+      'https://passculture.pro',
+      'https://backend.passculture.pro',
+    ]
     const url = new URL(window.location.href)
     const source = url.searchParams.get("source") || ""
 
@@ -137,7 +157,7 @@
     block.style.display = "block"
 
     const redirectToApp = () => {
-      if (source) {
+      if (source && allowedDomains.indexOf(source) !== -1) {
         window.location.replace(source)
       }
     }
